@@ -62,11 +62,11 @@ func main() {
 		case s3 < small:
 			small = s3
 		default:
-		 
+
 		}
 
 		totalPaper += surfaceArea + small
-		
+
 	}
 
 	if err := scanner.Err(); err != nil {

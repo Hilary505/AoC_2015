@@ -15,7 +15,7 @@ func main() {
 		fmt.Printf("Error opening file: %s\n", err)
 		return
 	}
-	
+
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
@@ -48,28 +48,25 @@ func main() {
 			//continue
 		}
 
-		// Calculate volume in cubic feet 
-		volume :=  l*w*h
-        perim1 := 2*(l+w) 
-		perim2 := 2*(w+h)
-		perim3 := 2 *(l+h)
+		// Calculate volume in cubic feet
+		volume := l * w * h
+		perim1 := 2 * (l + w)
+		perim2 := 2 * (w + h)
+		perim3 := 2 * (l + h)
 		small := perim1
-        if perim2 < small {
+		if perim2 < small {
 			small = perim2
 		}
 		if perim3 < perim2 {
 			small = perim3
 		}
-	
 
 		totalFeet += volume + small
 	}
 
-	if err := scanner.Err();
-	 err != nil {
+	if err := scanner.Err(); err != nil {
 		fmt.Println("Error reading file:", err)
 	}
 
 	fmt.Printf("Total square feet of wrapping paper needed: %d\n", totalFeet)
 }
-
